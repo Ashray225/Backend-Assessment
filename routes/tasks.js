@@ -17,7 +17,7 @@ router.use(authenticateToken);
 // Task CRUD routes
 router.post('/', createTask);
 router.get('/', getTasks);
-// router.get('/search', searchTasks);
+router.get('/search', searchTasks);
 router.get('/category/:category', getTasksByCategory);
 router.get('/:taskId', getTaskById);
 router.put('/:taskId', updateTask);

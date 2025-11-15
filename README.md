@@ -17,14 +17,7 @@ Minimal Node.js backend for a To-Do List Application with user authentication an
 npm install
 ```
 
-2. Configure environment variables in `.env`:
-```
-PORT=3000
-MONGODB_URI=mongodb://localhost:27017/todoapp
-JWT_SECRET=your_jwt_secret_key_here
-```
-
-3. Start the server:
+2. Start the server:
 ```bash
 npm start
 ```
@@ -37,14 +30,16 @@ npm start
 
 ### Tasks (Protected Routes)
 - `POST /api/tasks` - Create new task
-- `GET /api/tasks` - Get all tasks (supports filtering)
+- `GET /api/tasks` - Get all tasks with filtering and sorting
+  - Query params: `status`, `category`, `dueDate`, `search`, `sortBy`, `sortOrder`
 - `GET /api/tasks/:taskId` - Get task by ID
-- `PUT /api/tasks/:taskId` - Update task
+- `POST /api/tasks/update` - Update task (pass id in body)
 - `DELETE /api/tasks/:taskId` - Delete task
 - `POST /api/tasks/:taskId/markCompleted` - Mark task as completed
 - `POST /api/tasks/:taskId/markPending` - Mark task as pending
 - `GET /api/tasks/category/:category` - Get tasks by category
-- `GET /api/tasks/search?q=query` - Search tasks by title/description
+- `GET /api/tasks/search` - Search tasks by title/description
+  - Query params: `search`
 
 ## Project Structure
 
@@ -52,8 +47,18 @@ npm start
 ├── config/
 │   └── database.js
 ├── controllers/
-│   ├── authController.js
-│   └── taskController.js
+│   ├── auth/
+│   │   ├── login.js
+│   │   └── register.js
+│   └── tasks/
+│       ├── createTask.js
+│       ├── getTasks.js
+│       ├── getTaskById.js
+│       ├── updateTask.js
+│       ├── deleteTask.js
+│       ├── updateStatus.js
+│       ├── getTasksByCategory.js
+│       └── searchTasks.js
 ├── middleware/
 │   └── auth.js
 ├── models/

@@ -12,8 +12,8 @@ const searchTasks = async (req, res) => {
     const tasks = await Task.find({
       userId: req.user._id,
       $or: [
-        { title: { $regex: q, $options: 'i' } },
-        { description: { $regex: q, $options: 'i' } }
+        { title: { $regex: decodeURIComponent(q), $options: 'i' } },
+        { description: { $regex: decodeURIComponent(q), $options: 'i' } }
       ]
     }).sort({ createdAt: -1 });
 
