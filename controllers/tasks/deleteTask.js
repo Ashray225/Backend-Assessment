@@ -7,6 +7,7 @@ const Task = require('../../models/Task');
  */
 const deleteTask = async (req, res) => {
   try {
+    // Atomic operation: findOneAndDelete ensures task is found and deleted atomically
     const task = await Task.findOneAndDelete({ 
       _id: req.params.taskId, 
       userId: req.user._id 

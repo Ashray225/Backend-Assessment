@@ -10,6 +10,7 @@ const updateStatus = async (req, res) => {
     const { taskId } = req.params;
     const status = req.path.includes('markCompleted') ? 'completed' : 'pending';
     
+    // Atomic operation: status update happens atomically to prevent race conditions
     const task = await Task.findOneAndUpdate(
       { _id: taskId, userId: req.user._id },
       { status },

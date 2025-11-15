@@ -8,6 +8,7 @@ const Task = require('../../models/Task');
 const updateTask = async (req, res) => {
   try {
     const { title, description, dueDate, category, status } = req.body;
+    // Atomic operation: findOneAndUpdate ensures all field updates happen atomically
     const task = await Task.findOneAndUpdate(
       { _id: req.params.taskId, userId: req.user._id },
       { title, description, dueDate, category, status , updatedAt: Date.now() },

@@ -16,6 +16,7 @@ const createTask = async (req, res) => {
       category,
     });
 
+    // Atomic operation: save() creates document atomically with all fields
     await task.save();
     res.status(201).json(task);
   } catch (error) {
