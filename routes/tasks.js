@@ -8,6 +8,7 @@ const { updateStatus } = require('../controllers/tasks/updateStatus');
 const { getTasksByCategory } = require('../controllers/tasks/getTasksByCategory');
 const { searchTasks } = require('../controllers/tasks/searchTasks');
 const { authenticateToken } = require('../middleware/auth');
+const { validateRequest, taskSchema, querySchema } = require('../middleware/validation');
 
 const router = express.Router();
 
@@ -15,12 +16,12 @@ const router = express.Router();
 router.use(authenticateToken);
 
 // Task CRUD routes
-router.post('/', createTask);
-router.get('/', getTasks);
+router.post('/', validateRequest(taskSchema), createTask);
+router.get('/', validateRequest(querySchema, 'query'), getTasks);
 router.get('/search', searchTasks);
 router.get('/category/:category', getTasksByCategory);
 router.get('/:taskId', getTaskById);
-router.put('/:taskId', updateTask);
+router.put('/:taskId', validateRequest(taskSchema), updateTask);
 router.delete('/:taskId', deleteTask);
 
 // Task status management routes

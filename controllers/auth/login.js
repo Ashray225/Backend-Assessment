@@ -6,12 +6,6 @@ const User = require('../../models/User');
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    
-    if (!email || !password) {
-        return res.status(400).json({
-        error: 'Email and password are required'
-      });
-    }
     // Find user by email
     const user = await User.findOne({ email });
     if (!user) {

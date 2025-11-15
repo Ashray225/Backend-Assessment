@@ -9,6 +9,7 @@ Minimal Node.js backend for a To-Do List Application with user authentication an
 - Task categorization and status management
 - Search and filtering capabilities
 - MongoDB with proper indexing
+- Request validation using Zod
 
 ## Setup
 
@@ -32,17 +33,19 @@ npm start
 
 ### Tasks (Protected Routes)
 **Note:** All task routes require JWT token in Authorization header: `Authorization: Bearer <token>`
-- `POST /api/tasks` - Create new task
+- `POST /api/tasks` - Create new task (validates: title*, description, dueDate*, category*)
 - `GET /api/tasks` - Get all tasks with filtering and sorting
-  - Query params: `status`, `category`, `dueDate`, `search`, `sortBy`, `sortOrder`
+  - Query params: `status`, `category`, `dueDate`, `search`, `sortBy`, `sortOrder` (all optional)
 - `GET /api/tasks/:taskId` - Get task by ID
-- `POST /api/tasks/update` - Update task (pass id in body)
+- `PUT /api/tasks/:taskId` - Update task (validates: title, description, dueDate, category, status)
 - `DELETE /api/tasks/:taskId` - Delete task
 - `POST /api/tasks/:taskId/markCompleted` - Mark task as completed
 - `POST /api/tasks/:taskId/markPending` - Mark task as pending
 - `GET /api/tasks/category/:category` - Get tasks by category
 - `GET /api/tasks/search` - Search tasks by title/description
   - Query params: `search`
+
+**Validation:** Fields marked with * are required. All requests are validated using Zod schemas.
 
 ## Project Structure
 
