@@ -17,7 +17,9 @@ Minimal Node.js backend for a To-Do List Application with user authentication an
 npm install
 ```
 
-2. Start the server:
+2. Environment variables: Please refer to the `.env` configuration provided in the email documentation and copy those values to the `.env` file in this repository.
+
+3. Start the server:
 ```bash
 npm start
 ```
