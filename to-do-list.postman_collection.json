@@ -1,0 +1,360 @@
+{
+	"info": {
+		"_postman_id": "645b0aed-d224-4b10-bf74-44712c38943b",
+		"name": "to-do-list",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29509028"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"ashraym225@gmail.com\",\n    \"password\":\"Ashray@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTE4MzhkNzYxMzFmMDQ4ZWM0Mzg5ZjgiLCJpYXQiOjE3NjMxOTU4MTQsImV4cCI6MTc2MzI4MjIxNH0.4xclgSUk9IBe3XPqcPhJQPuWLv8_IF7mV_Q-3XsSncA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Buy groceries\",\n  \"description\": \"Buy milk, eggs, and bread\",\n  \"dueDate\": \"2025-02-10\",\n  \"category\": \"Personal\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Udpate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTE4MzhkNzYxMzFmMDQ4ZWM0Mzg5ZjgiLCJpYXQiOjE3NjMxOTU4MTQsImV4cCI6MTc2MzI4MjIxNH0.4xclgSUk9IBe3XPqcPhJQPuWLv8_IF7mV_Q-3XsSncA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Buy groceries\",\n    \"description\": \"Buy milk, egg, and bread\",\n    \"dueDate\": \"2025-02-10\",\n    \"category\": \"Personal\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/tasks/69183c4cce4e13a327f51303",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"tasks",
+								"69183c4cce4e13a327f51303"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTE4MzhkNzYxMzFmMDQ4ZWM0Mzg5ZjgiLCJpYXQiOjE3NjMxOTU4MTQsImV4cCI6MTc2MzI4MjIxNH0.4xclgSUk9IBe3XPqcPhJQPuWLv8_IF7mV_Q-3XsSncA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/tasks?dueDate=2025-02-10&sortBy=status&sortOrder=desc&search=egg&status=completed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "dueDate",
+									"value": "2025-02-10"
+								},
+								{
+									"key": "sortBy",
+									"value": "status"
+								},
+								{
+									"key": "sortOrder",
+									"value": "desc"
+								},
+								{
+									"key": "search",
+									"value": "egg"
+								},
+								{
+									"key": "status",
+									"value": "completed"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTE4MzhkNzYxMzFmMDQ4ZWM0Mzg5ZjgiLCJpYXQiOjE3NjMxOTU4MTQsImV4cCI6MTc2MzI4MjIxNH0.4xclgSUk9IBe3XPqcPhJQPuWLv8_IF7mV_Q-3XsSncA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/tasks/69183c4cce4e13a327f51303",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"tasks",
+								"69183c4cce4e13a327f51303"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTE4MzhkNzYxMzFmMDQ4ZWM0Mzg5ZjgiLCJpYXQiOjE3NjMxOTU4MTQsImV4cCI6MTc2MzI4MjIxNH0.4xclgSUk9IBe3XPqcPhJQPuWLv8_IF7mV_Q-3XsSncA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/tasks/691843907e008e91001e0972",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"tasks",
+								"691843907e008e91001e0972"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "markPending",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTE4MzhkNzYxMzFmMDQ4ZWM0Mzg5ZjgiLCJpYXQiOjE3NjMyMDA2ODcsImV4cCI6MTc2MzI4NzA4N30.WRnkiAsf0-m0ltCrO3954mUT6BOU5Tpc4_pSGh_C_64",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/tasks/69184d7a99751de6aa1823e3/markPending",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"tasks",
+								"69184d7a99751de6aa1823e3",
+								"markPending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "markCompleted",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTE4MzhkNzYxMzFmMDQ4ZWM0Mzg5ZjgiLCJpYXQiOjE3NjMyMDA2ODcsImV4cCI6MTc2MzI4NzA4N30.WRnkiAsf0-m0ltCrO3954mUT6BOU5Tpc4_pSGh_C_64",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/tasks/69184d7a99751de6aa1823e3/markPending",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"tasks",
+								"69184d7a99751de6aa1823e3",
+								"markPending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTE4MzhkNzYxMzFmMDQ4ZWM0Mzg5ZjgiLCJpYXQiOjE3NjMyMDEwNTgsImV4cCI6MTc2MzI4NzQ1OH0.MDNN9lEFqDcGOQ0r_URFAQXgsjpNFg5e53tCI062j5g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/tasks/search?q=grocer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"tasks",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "grocer"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View by category",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
