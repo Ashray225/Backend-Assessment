@@ -1,6 +1,10 @@
 const Task = require('../../models/Task');
 
-// Delete task
+/**
+ * Permanently removes task by taskId from user's task list
+ * @param {Object} req - Contains taskId in URL params
+ * @param {Object} res - Returns success message or 404 if task not found
+ */
 const deleteTask = async (req, res) => {
   try {
     const task = await Task.findOneAndDelete({ 

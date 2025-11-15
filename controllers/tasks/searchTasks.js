@@ -1,6 +1,10 @@
 const Task = require('../../models/Task');
 
-// Search tasks by title or description
+/**
+ * Performs case-insensitive text search across task titles and descriptions
+ * @param {Object} req - Contains search query 'q' in query params
+ * @param {Object} res - Returns matching tasks sorted by creation date, or error if no query
+ */
 const searchTasks = async (req, res) => {
   try {
     const { q } = req.query;

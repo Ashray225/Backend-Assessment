@@ -1,7 +1,11 @@
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 
-// Register new user
+/**
+ * Creates new user account with encrypted password after validating email uniqueness
+ * @param {Object} req - Contains email and password in request body
+ * @param {Object} res - Returns success message on successful registration
+ */
 const register = async (req, res) => {
   try {
     const { email, password } = req.body;

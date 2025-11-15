@@ -1,6 +1,10 @@
 const Task = require('../../models/Task');
 
-// Get tasks with search, sorting, and filters
+/**
+ * Fetches user's tasks with optional filters (status, category, dueDate), search, and sorting
+ * @param {Object} req - Query params: status, category, dueDate, search, sortBy, sortOrder
+ * @param {Object} res - Returns array of filtered and sorted task objects
+ */
 const getTasks = async (req, res) => {
   try {
     const { status, category, dueDate, search, sortBy, sortOrder } = req.query;

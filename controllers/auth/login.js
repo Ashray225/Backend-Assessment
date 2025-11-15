@@ -2,7 +2,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
 
-// Login user
+/**
+ * Validates user credentials and generates JWT token for authentication
+ * @param {Object} req - Contains email and password in request body
+ * @param {Object} res - Returns JWT token and userId on successful login
+ */
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;

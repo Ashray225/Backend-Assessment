@@ -1,5 +1,10 @@
 const Task = require('../../models/Task');
 
+/**
+ * Toggles task status between 'completed' and 'pending' based on endpoint called
+ * @param {Object} req - Contains taskId in params, route determines status value
+ * @param {Object} res - Returns updated task with new status
+ */
 const updateStatus = async (req, res) => {
   try {
     const { taskId } = req.params;

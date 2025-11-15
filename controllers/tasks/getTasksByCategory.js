@@ -1,6 +1,10 @@
 const Task = require('../../models/Task');
 
-// Get tasks by category
+/**
+ * Fetches all tasks belonging to specific category for authenticated user
+ * @param {Object} req - Contains category name in URL params
+ * @param {Object} res - Returns array of tasks matching the category, sorted by creation date
+ */
 const getTasksByCategory = async (req, res) => {
   try {
     const tasks = await Task.find({ 

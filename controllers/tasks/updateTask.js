@@ -1,6 +1,10 @@
 const Task = require('../../models/Task');
 
-// Update task
+/**
+ * Modifies task fields (title, description, dueDate, category, status) by taskId
+ * @param {Object} req - Contains taskId in params and update fields in body
+ * @param {Object} res - Returns updated task object or 404 if not found
+ */
 const updateTask = async (req, res) => {
   try {
     const { title, description, dueDate, category, status } = req.body;

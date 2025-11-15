@@ -1,12 +1,13 @@
 const Task = require('../../models/Task');
 
-// Create new task
+/**
+ * Creates new task with title, description, dueDate, and category for authenticated user
+ * @param {Object} req - Contains task details in body (title, description, dueDate, category)
+ * @param {Object} res - Returns created task object with auto-generated ID and pending status
+ */
 const createTask = async (req, res) => {
-
-  // By default the status is set to 'pending' when a new task is created
   try {
     const { title, description, dueDate, category } = req.body;
-    console.log('User in createTask:', req.user);
     const task = new Task({
       userId: req.user._id,
       title,

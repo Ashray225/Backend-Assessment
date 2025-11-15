@@ -1,6 +1,10 @@
 const Task = require('../../models/Task');
 
-// Get single task by ID
+/**
+ * Fetches single task by taskId ensuring it belongs to authenticated user
+ * @param {Object} req - Contains taskId in URL params
+ * @param {Object} res - Returns task object or 404 if not found/unauthorized
+ */
 const getTaskById = async (req, res) => {
   try {
     const task = await Task.findOne({ 
