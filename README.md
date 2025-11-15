@@ -31,6 +31,7 @@ npm start
 - `POST /api/auth/login` - Login user
 
 ### Tasks (Protected Routes)
+**Note:** All task routes require JWT token in Authorization header: `Authorization: Bearer <token>`
 - `POST /api/tasks` - Create new task
 - `GET /api/tasks` - Get all tasks with filtering and sorting
   - Query params: `status`, `category`, `dueDate`, `search`, `sortBy`, `sortOrder`
